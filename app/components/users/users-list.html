@@ -1,0 +1,141 @@
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+
+    <!-- Left Sidebar-->
+    <div class="col-12 col-md-3 col-xl-2">
+
+    </div>
+
+    <!--   Main Section   -->
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <h2>List of users</h2>
+
+      <!--   Search Input Form & Add User Button   -->
+      <div class="form-group row">
+        <div class="col-4">
+          <input type="text" class="form-control" ng-model="vm.search" placeholder="Search">
+        </div>
+        <button type="button" class="btn btn-defult btn-success" ng-click="vm.toggleAddUser()" ng-disabled="vm.addUsrClicked" name="addUserbutton">
+          <span class="glyphicon glyphicon-plus"></span> Add USer
+        </button>
+      </div>
+
+      <!--   Hidden input form group for add user   -->
+      <div class="form-group" ng-show="vm.addUserShow">
+        <h4>Please enter user's data:</h4>
+        <div class="col-4">
+          <input type=text class="form-control" ng-model="vm.f_name" placeholder="First name"><br>
+        </div>
+        <div class="col-4">
+          <input type=text class="form-control" ng-model="vm.l_name" placeholder="Last name"><br>
+        </div>
+        <div class="col-4">
+          <input type=text class="form-control" ng-model="vm.email" placeholder="E-mail"><br>
+        </div>
+        <div class="col-4">
+          Select Gender:
+          <label class="radio-inline">
+            <input type="radio" name="SGender" ng-change="vm.radioChange('Male')" ng-model="vm.gender" value="Male" /> Male
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="SGender" ng-change="vm.radioChange('Female')" ng-model="vm.gender" value="Female" />  Female
+          </label>
+        </div>
+
+        <br>
+
+        <div class="container">
+          <button type="button" class="btn btn-defult btn-success" ng-click="vm.insertData()" name="confirmbutton">
+            <span class="glyphicon glyphicon-ok"></span> Insert User
+          </button>
+          <button type="button" class="btn btn-defult btn-danger" ng-click="vm.toggleAddUser()" name="cancelbutton">
+            <span class="glyphicon glyphicon-ok"></span> Cancel
+          </button>
+        </div>
+      </div>
+
+
+      <!--   Hidden input form group for update user data  -->
+      <div class="form-group" ng-show="vm.updateUserShow">
+        <h4>Please enter user's data:</h4><br>
+        <div class="col-4">
+          <input type=text class="form-control" ng-model="vm.updf_name" placeholder="First name"><br>
+        </div>
+        <div class="col-4">
+          <input type=text class="form-control" ng-model="vm.updl_name" placeholder="Last name"><br>
+        </div>
+        <div class="col-4">
+          <input type=text class="form-control" ng-model="vm.updemail" placeholder="E-mail"><br>
+        </div>
+        <div class="col-4">
+          Select Gender:
+          <label class="radio-inline">
+            <input type="radio" name="SGender" ng-change="radioChange('Male')" ng-model="vm.updgender" value="Male" /> Male
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="SGender" ng-change="radioChange('Female')" ng-model="vm.updgender" value="Female" />  Female
+          </label>
+        </div>
+
+        <br>
+
+        <div class="container">
+          <button type="button" ng-click="vm.sendUpdateData()" class="btn btn-defult btn-success" name="confirmbutton">
+            <span class="glyphicon glyphicon-ok"></span> Update
+          </button>
+          <button type="button" class="btn btn-defult btn-danger" ng-click="vm.toggleUpdateUser()" name="cancelbutton">
+            <span class="glyphicon glyphicon-ok"></span> Cancel
+          </button>
+        </div>
+      </div>
+
+
+
+      <!--   USERS TABLE   -->
+      <table class="table table-sm">
+        <thead class="thead-light">
+          <tr>
+            <!--<th scope="col">#</th>-->
+            <th scope="col">User ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="vsm in vm.users | filter: vm.search">
+              <!--<td><input type="checkbox"></td>-->
+              <td>{{vsm.id}}</td>
+              <td>{{vsm.first_name}}</td>
+              <td>{{vsm.last_name}}</td>
+              <td>{{vsm.email}}</td>
+              <td>{{vsm.gender}}</td>
+              <td>
+                <button type="button" ng-click="vm.updateUser(vsm.id)" class="btn btn-default btn-success btn-sm">
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+              </td>
+              <td>
+                <button type="button" ng-click="vm.removeUser(vsm.id)" confirm="Are you sure?" class="btn btn-default btn-danger btn-sm">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </button>
+              </td>
+
+
+            </tr>
+
+          </tbody>
+        </table>
+
+
+
+    </main>
+
+
+  </div><!-- End row-->
+
+
+</div><!-- End Main Container container-fluid -->

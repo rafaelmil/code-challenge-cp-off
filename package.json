@@ -1,0 +1,50 @@
+{
+  "name": "lakal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "angular-confirm1": "^1.1.0",
+    "bootstrap": "^4.1.1",
+    "gulp": "^3.9.1",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "angular": "^1.6.5",
+    "angular-mocks": "^1.7.0",
+    "bower": "^1.8.4",
+    "browser-sync": "^2.24.4",
+    "concurrently": "^3.5.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlclean": "^2.7.22",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-inject": "^4.3.2",
+    "gulp-live-server": "0.0.31",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-npm-script-sync": "^1.1.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
+    "karma-requirejs": "^1.1.0",
+    "live-server": "^1.2.0",
+    "popper.js": "^1.14.3",
+    "pump": "^3.0.0",
+    "requirejs": "^2.3.5"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js",
+    "serve": "live-server",
+    "startdb": "json-server --watch db.json",
+    "gulp": "gulp",
+    "start": "concurrently \"npm run serve\" \"npm run startdb\" \"npm run gulp\""
+  },
+  "author": "",
+  "license": "MIT"
+}
